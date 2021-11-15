@@ -1,4 +1,4 @@
-package com.itvdn.javaEssential.petrov.lesson002.homeWork.Car_1;
+package com.itvdn.javaEssential.petrov.lesson002.homeWork.car_1;
 
 public class Car {
     private int year;

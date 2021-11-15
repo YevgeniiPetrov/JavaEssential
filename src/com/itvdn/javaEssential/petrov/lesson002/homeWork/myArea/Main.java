@@ -2,7 +2,7 @@
 должен принимать радиус и используя PI посчитать площадь круга.
 Создать класс Main, где запустить данный метод.*/
 
-package com.itvdn.javaEssential.petrov.lesson002.homeWork.MyArea;
+package com.itvdn.javaEssential.petrov.lesson002.homeWork.myArea;
 
 public class Main {
     public static void main(String[] args) {

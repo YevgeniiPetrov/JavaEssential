@@ -5,7 +5,7 @@
 Перегрузить конструкторы вызывая конструктор из конструктора.
 Создать класс Main, в котором создать экземляры класса Машина с разными параметрами.*/
 
-package com.itvdn.javaEssential.petrov.lesson002.homeWork.Car_3;
+package com.itvdn.javaEssential.petrov.lesson002.homeWork.car_3;
 
 public class Main {
     public static void main(String[] args) {

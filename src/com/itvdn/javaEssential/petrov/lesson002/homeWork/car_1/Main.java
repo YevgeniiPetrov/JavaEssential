@@ -4,7 +4,7 @@
 Создать конструктор по умолчанию, конструктор с одним и 2-я параметрами.
 Создать класс Main в котором создать экземпляры вызывая разные конструкторы.*/
 
-package com.itvdn.javaEssential.petrov.lesson002.homeWork.Car_1;
+package com.itvdn.javaEssential.petrov.lesson002.homeWork.car_1;
 
 public class Main {
     public static void main(String[] args) {
