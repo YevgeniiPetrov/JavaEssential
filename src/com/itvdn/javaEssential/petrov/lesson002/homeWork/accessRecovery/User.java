@@ -13,19 +13,20 @@ public class User {
         this.email = email;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public boolean checkBirthday(String birthday) {
+        return !this.birthday.equals("") &&
+                !this.birthday.equals(Storage.NOT) &&
+                this.birthday.equals(birthday);
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public boolean checkEmail(String email) {
+        return !this.email.equals("") &&
+                !this.email.equals(Storage.NOT) &&
+                this.email.equals(email);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public int getPercent(String birthday, String email) {
+        return (this.checkBirthday(birthday) ? Storage.BIRTHDAY_PERCENT : Storage.ZERO) +
+                (this.checkEmail(email) ? Storage.EMAIL_PERCENT : Storage.ZERO);
     }
 }

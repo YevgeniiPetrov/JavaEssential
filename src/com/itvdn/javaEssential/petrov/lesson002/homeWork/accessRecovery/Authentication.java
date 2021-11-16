@@ -9,19 +9,20 @@ public class Authentication {
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public boolean checkLogin(String login) {
+        return !this.login.equals("") &&
+                !this.login.equals(Storage.NOT)
+                && this.login.equals(login);
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public boolean checkPassword(String password) {
+        return !this.password.equals("") &&
+                !this.password.equals(Storage.NOT)
+                && this.password.equals(password);
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public int getPercent(String login, String password) {
+        return (this.checkLogin(login) ? Storage.LOGIN_PERCENT : Storage.ZERO) +
+                (this.checkPassword(password) ? Storage.PASSWORD_PERCENT : Storage.ZERO);
     }
 }
