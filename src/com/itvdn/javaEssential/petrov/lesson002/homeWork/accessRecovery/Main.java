@@ -41,6 +41,6 @@ package com.itvdn.javaEssential.petrov.lesson002.homeWork.accessRecovery;
 public class Main {
     public static void main(String[] args) {
         Storage.initClient();
-        AccessRecovery.run(Storage.CLIENT);
+        AccessRecovery.run(Storage.client);
     }
 }
