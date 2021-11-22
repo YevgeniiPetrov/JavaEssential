@@ -10,7 +10,7 @@ public class Football implements Sport, Game, Team {
 
     @Override
     public void play() {
-        System.out.println("Играть!");
+        System.out.println("Играть в футбол.");
     }
 
     @Override

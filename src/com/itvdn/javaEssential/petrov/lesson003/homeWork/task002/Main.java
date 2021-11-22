@@ -10,5 +10,9 @@ public class Main {
         Football football = new Football();
         football.info();
         football.play();
+        Chess chess = new Chess();
+        chess.info();
+        chess.play();
+        new Run().info();
     }
 }
