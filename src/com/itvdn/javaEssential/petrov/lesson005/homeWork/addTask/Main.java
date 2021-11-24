@@ -21,5 +21,21 @@ get(int pos)
 
 package com.itvdn.javaEssential.petrov.lesson005.homeWork.addTask;
 
+import java.util.ArrayList;
+
 public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("test");
+        arrayList.add("test1");
+        arrayList.add(1, "test2");
+        System.out.println(arrayList);
+        MyArrayListImpl myArrayList = new MyArrayListImpl();
+        myArrayList.add("t1");
+        myArrayList.add("t2");
+        myArrayList.add("t2", 5);
+        myArrayList.add("t2", 8);
+        myArrayList.add("t3");
+        System.out.println(myArrayList);
+    }
 }
