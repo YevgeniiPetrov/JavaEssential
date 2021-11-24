@@ -8,9 +8,9 @@ import com.itvdn.javaEssential.petrov.lesson005.homeWork.task002.Zoo;
 
 public class Main {
     public static void main(String[] args) {
-        Zoo.ANIMALS.remove(7);
-        Zoo.ANIMALS.remove(5);
-        Zoo.ANIMALS.remove(3);
-        System.out.printf("Размер списка: %d.", Zoo.ANIMALS.size());
+        Zoo.animals.remove(7);
+        Zoo.animals.remove(5);
+        Zoo.animals.remove(3);
+        System.out.printf("Размер списка: %d.", Zoo.animals.size());
     }
 }
