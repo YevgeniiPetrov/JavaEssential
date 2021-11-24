@@ -4,11 +4,10 @@ public class MyArrayListImpl implements MyList {
     // Изначальный массив должен иметь длину 10
     private final int amountElements = 10;
     private String[] array = new String[amountElements];
-    private int currentIndex = 0;
 
     private void initNewArray() {
-        String[] temp = new String[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
+        String[] temp = new String[size() + 1];
+        for (int i = 0; i < size(); i++) {
             temp[i] = array[i];
         }
         array = temp;
@@ -16,26 +15,23 @@ public class MyArrayListImpl implements MyList {
 
     @Override
     public void add(String element) {
-        if (currentIndex < array.length) {
-            array[currentIndex++] = element;
-        } else {
-            initNewArray();
-            add(element);
-        }
+        initNewArray();
+        array[size() - 1] = element;
     }
 
     @Override
     public void add(String element, int index) {
-        if (index > currentIndex) {
+        if (index > size()) {
             array[index] = element;
-        } else if (index == currentIndex) {
+        } else if (index == size()) {
             add(element);
             return;
         }
-        String[] temp = new String[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
-            temp[i] = i == index ? element : array[i];
+        String[] temp = new String[size() + 1];
+        for (int i = 0; i < size(); i++) {
+            temp[i < index ? i : i + 1] = array[i];
         }
+        temp[index] = element;
         array = temp;
     }
 
