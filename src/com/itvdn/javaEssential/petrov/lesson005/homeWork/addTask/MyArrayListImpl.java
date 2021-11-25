@@ -5,37 +5,21 @@ public class MyArrayListImpl implements MyList {
     private final int amountElements = 10;
     private String[] array = new String[amountElements];
 
-    private String[] increaseArray(int index) {
-        String[] temp = new String[size() + 1];
-        for (int i = 0; i < size(); i++) {
-            temp[i < index ? i : i + 1] = array[i];
-        }
-        return temp;
-    }
-
-    private String[] decreaseArray(int index) {
-        String[] temp = new String[size() - 1];
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = array[i < index ? i : i + 1];
-        }
-        return temp;
-    }
-
     @Override
     public void add(String element) {
-        array = increaseArray(size());
-        set(element, size() - 1);
+        add(element, size());
     }
 
     @Override
     public void add(String element, int index) {
         if (index > size()) {
             set(element, index);
-        } else if (index == size()) {
-            add(element);
-            return;
         }
-        array = increaseArray(index);
+        String[] temp = new String[size() + 1];
+        for (int i = 0; i < size(); i++) {
+            temp[i < index ? i : i + 1] = array[i];
+        }
+        array = temp;
         set(element, index);
     }
 
@@ -54,7 +38,11 @@ public class MyArrayListImpl implements MyList {
         if (index > size()) {
             set(null, index);
         }
-        array = decreaseArray(index);
+        String[] temp = new String[size() - 1];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = array[i < index ? i : i + 1];
+        }
+        array = temp;
     }
 
     @Override
