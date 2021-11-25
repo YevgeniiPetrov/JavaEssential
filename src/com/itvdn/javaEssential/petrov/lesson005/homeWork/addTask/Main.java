@@ -25,35 +25,25 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> arrayList = new ArrayList<>();
-        System.out.println(arrayList);
-        arrayList.add(0, "1");
-        arrayList.add(0, "2");
-        arrayList.add(2, "3");
-        arrayList.add(2, "4");
-        System.out.println(arrayList);
-        System.out.println();
-
-
         MyArrayListImpl myArrayList = new MyArrayListImpl();
         System.out.println(myArrayList);
         myArrayList.add("1");
         System.out.println(myArrayList);
-        myArrayList.add("2", 7);
+        myArrayList.add("2", 4);
         System.out.println(myArrayList);
         myArrayList.add("3", 7);
         System.out.println(myArrayList);
-        myArrayList.add("4", 7);
+        myArrayList.add("4", 1);
         System.out.println(myArrayList);
-        myArrayList.add("5", 3);
+        myArrayList.add("5");
         System.out.println(myArrayList);
-        myArrayList.add("6");
-        myArrayList.add("9", 0);
+        myArrayList.remove("3");
         System.out.println(myArrayList);
-        myArrayList.add("7");
-        myArrayList.add("8");
+        myArrayList.remove(4);
         System.out.println(myArrayList);
-        myArrayList.add("10", 0);
+        myArrayList.set("6", 8);
+        System.out.println(myArrayList);
+        myArrayList.clear();
         System.out.println(myArrayList);
     }
 }

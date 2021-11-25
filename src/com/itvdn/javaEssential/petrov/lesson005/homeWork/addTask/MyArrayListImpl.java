@@ -5,34 +5,38 @@ public class MyArrayListImpl implements MyList {
     private final int amountElements = 10;
     private String[] array = new String[amountElements];
 
-    private void initNewArray() {
+    private String[] increaseArray(int index) {
         String[] temp = new String[size() + 1];
         for (int i = 0; i < size(); i++) {
-            temp[i] = array[i];
+            temp[i < index ? i : i + 1] = array[i];
         }
-        array = temp;
+        return temp;
+    }
+
+    private String[] decreaseArray(int index) {
+        String[] temp = new String[size() - 1];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = array[i < index ? i : i + 1];
+        }
+        return temp;
     }
 
     @Override
     public void add(String element) {
-        initNewArray();
-        array[size() - 1] = element;
+        array = increaseArray(size());
+        set(element, size() - 1);
     }
 
     @Override
     public void add(String element, int index) {
         if (index > size()) {
-            array[index] = element;
+            set(element, index);
         } else if (index == size()) {
             add(element);
             return;
         }
-        String[] temp = new String[size() + 1];
-        for (int i = 0; i < size(); i++) {
-            temp[i < index ? i : i + 1] = array[i];
-        }
-        temp[index] = element;
-        array = temp;
+        array = increaseArray(index);
+        set(element, index);
     }
 
     @Override
@@ -42,45 +46,51 @@ public class MyArrayListImpl implements MyList {
 
     @Override
     public void remove(String element) {
-
+        remove(indexOf(element));
     }
 
     @Override
     public void remove(int index) {
-
+        if (index > size()) {
+            set(null, index);
+        }
+        array = decreaseArray(index);
     }
 
     @Override
     public void clear() {
-
+        array = new String[amountElements];
     }
 
     @Override
     public void set(String element, int index) {
-
+        array[index] = element;
     }
 
     @Override
     public int indexOf(String element) {
-        return 0;
+        for (int i = 0; i < size(); i++) {
+            if (element != null && get(i) != null && get(i).equals(element)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
     public Object get(int index) {
-        return null;
+        return array[index];
     }
 
     @Override
     public String toString() {
-        StringBuilder arrayStr = new StringBuilder();
-        arrayStr.append("[");
-        for (int i = 0; i < array.length; i++) {
-            arrayStr.append(array[i]);
-            if (i < array.length - 1) {
+        StringBuilder arrayStr = new StringBuilder("[");
+        for (int i = 0; i < size(); i++) {
+            arrayStr.append(get(i));
+            if (i < size() - 1) {
                 arrayStr.append(", ");
             }
         }
-        arrayStr.append("]");
-        return new String(arrayStr);
+        return new String(arrayStr.append("]"));
     }
 }
