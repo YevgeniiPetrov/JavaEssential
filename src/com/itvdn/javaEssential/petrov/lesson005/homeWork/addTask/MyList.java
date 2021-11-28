@@ -4,7 +4,7 @@ public interface MyList {
     void add(String element);
     void add(String element, int index);
     int size();
-    void remove(String element);
+    boolean remove(String element);
     void remove(int index);
     void clear();
     void set(String element, int index);

@@ -21,29 +21,20 @@ get(int pos)
 
 package com.itvdn.javaEssential.petrov.lesson005.homeWork.addTask;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         MyArrayListImpl myArrayList = new MyArrayListImpl();
-        System.out.println(myArrayList);
-        myArrayList.add("1");
-        System.out.println(myArrayList);
-        myArrayList.add("2", 4);
-        System.out.println(myArrayList);
-        myArrayList.add("3", 7);
-        System.out.println(myArrayList);
-        myArrayList.add("4", 1);
-        System.out.println(myArrayList);
-        myArrayList.add("5");
-        System.out.println(myArrayList);
-        myArrayList.remove("3");
-        System.out.println(myArrayList);
-        myArrayList.remove(4);
-        System.out.println(myArrayList);
-        myArrayList.set("6", 8);
-        System.out.println(myArrayList);
-        myArrayList.clear();
-        System.out.println(myArrayList);
+        for (int i = 0; i < 25; i++) {
+            int r = (int) (Math.random() * myArrayList.size());
+            myArrayList.add("" + i, r);
+            System.out.println(myArrayList.get(r));
+            System.out.println(myArrayList);
+        }
+        for (int i = 25; i > 0; i--) {
+            int r = (int) (Math.random() * myArrayList.size());
+            System.out.println(myArrayList.get(r));
+            myArrayList.remove(r);
+            System.out.println(myArrayList);
+        }
     }
 }
