@@ -24,16 +24,12 @@ package com.itvdn.javaEssential.petrov.lesson005.homeWork.addTask;
 public class Main {
     public static void main(String[] args) {
         MyArrayListImpl myArrayList = new MyArrayListImpl();
-        for (int i = 0; i < 25; i++) {
-            int r = (int) (Math.random() * myArrayList.size());
-            myArrayList.add("" + i, r);
-            System.out.println(myArrayList.get(r));
+        for (int i = 0; i < 50; i++) {
+            myArrayList.add("" + i, ((int) (Math.random() * myArrayList.size())));
             System.out.println(myArrayList);
         }
-        for (int i = 25; i > 0; i--) {
-            int r = (int) (Math.random() * myArrayList.size());
-            System.out.println(myArrayList.get(r));
-            myArrayList.remove(r);
+        for (int i = 0; i < 50; i++) {
+            myArrayList.remove((int) (Math.random() * myArrayList.size()));
             System.out.println(myArrayList);
         }
     }
