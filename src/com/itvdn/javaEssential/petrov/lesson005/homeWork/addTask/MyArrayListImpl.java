@@ -124,8 +124,7 @@ public class MyArrayListImpl implements MyList {
     public int indexOf(String element) {
         // return Arrays.asList(array).indexOf(element);
         for (int i = 0; i < size; i++) {
-            if ((element == null && array[i] == null) ||
-                    (element != null && element.equals(array[i]))) {
+            if ((element == array[i]) || (element != null && element.equals(array[i]))) {
                 return i;
             }
         }
