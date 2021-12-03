@@ -8,54 +8,65 @@ mul – умножение, div – деление).
 
 package com.itvdn.javaEssential.petrov.lesson008.homeWork;
 
-import java.io.DataOutput;
 import java.util.Scanner;
 
 public class Calculator {
-    public static double add(double firstNumber, double secondNumber) {
+    public static int add(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
     }
 
-    public static double sub(double firstNumber, double secondNumber) {
+    public static int sub(int firstNumber, int secondNumber) {
         return firstNumber - secondNumber;
     }
 
-    public static double mul(double firstNumber, double secondNumber) {
+    public static int mul(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber;
     }
 
-    public static double div(double firstNumber, double secondNumber) {
+    public static int div(int firstNumber, int secondNumber) {
         return firstNumber / secondNumber;
+    }
+
+    public static int getArithmeticResult(int firstNumber, int secondNumber, String sign) throws Exception {
+        int result;
+        switch (sign) {
+            case "+":
+                result = add(firstNumber, secondNumber);
+                break;
+            case "-":
+                result = sub(firstNumber, secondNumber);
+                break;
+            case "*":
+                result = mul(firstNumber, secondNumber);
+                break;
+            case "/":
+                result = div(firstNumber, secondNumber);
+                break;
+            default:
+                throw new Exception("Указанной арифметичесуой операции нет или не предусмотрено.");
+        }
+        return result;
+    }
+
+    public static String getString(Scanner sc, String message) {
+        System.out.println(message);
+        return sc.next();
+    }
+
+    public static int getNumber(Scanner sc, String message) {
+        return Integer.parseInt(getString(sc, message));
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
             try {
-                System.out.println("Введите первое число:");
-                Double firstNumber = sc.nextDouble();
-                System.out.println("Введите второе число:");
-                Double secondNumber = sc.nextDouble();
-                System.out.println("Введите знак арифметической операции:");
-                switch (sc.nextLine()) {
-                    case "+":
-                        System.out.printf("%.2f + %.2f = %.2", firstNumber, secondNumber, add(firstNumber, secondNumber));
-                        break;
-                    case "-":
-                        System.out.printf("%.2f - %.2f = %.2", firstNumber, secondNumber, sub(firstNumber, secondNumber));
-                        break;
-                    case "*":
-                        System.out.printf("%.2f * %.2f = %.2", firstNumber, secondNumber, mul(firstNumber, secondNumber));
-                        break;
-                    case "/":
-                        System.out.printf("%.2f / %.2f = %.2", firstNumber, secondNumber, mul(firstNumber, secondNumber));
-                        break;
-                    default:
-                        System.out.println("Ввод выполнен не верно. Повторите ввод.");
-                        continue;
-                }
-                System.out.printf("Введите 'Да', если хотите повторить ввод.");
-                if (!sc.nextLine().equalsIgnoreCase("Да")) {
+                int firstNumber = getNumber(sc, "Введите первое число:");
+                int secondNumber = getNumber(sc, "Введите второе число:");
+                String sign = getString(sc, "Введите знак арифметической операции:");
+                System.out.printf("%d %s %d = %d\n",
+                        firstNumber, sign, secondNumber, getArithmeticResult(firstNumber, secondNumber, sign));
+                if (!getString(sc, "Введите 'Да', если хотите повторить ввод.").equalsIgnoreCase("Да")) {
                     break;
                 }
             } catch (Exception e) {
