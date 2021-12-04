@@ -43,30 +43,30 @@ public class Calculator {
                 result = div(firstNumber, secondNumber);
                 break;
             default:
-                throw new Exception("Указанной арифметичесуой операции нет или не предусмотрено.");
+                throw new Exception("Указанной арифметической операции нет или не предусмотрено.");
         }
         return result;
     }
 
-    public static String getString(Scanner sc, String message) {
+    public static String getInputString(Scanner sc, String message) {
         System.out.println(message);
         return sc.next();
     }
 
-    public static int getNumber(Scanner sc, String message) {
-        return Integer.parseInt(getString(sc, message));
+    public static int getInputNumber(Scanner sc, String message) {
+        return Integer.parseInt(getInputString(sc, message));
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
             try {
-                int firstNumber = getNumber(sc, "Введите первое число:");
-                int secondNumber = getNumber(sc, "Введите второе число:");
-                String sign = getString(sc, "Введите знак арифметической операции:");
+                int firstNumber = getInputNumber(sc, "Введите первое число:");
+                int secondNumber = getInputNumber(sc, "Введите второе число:");
+                String sign = getInputString(sc, "Введите знак арифметической операции:");
                 System.out.printf("%d %s %d = %d\n",
                         firstNumber, sign, secondNumber, getArithmeticResult(firstNumber, secondNumber, sign));
-                if (!getString(sc, "Введите 'Да', если хотите повторить ввод.").equalsIgnoreCase("Да")) {
+                if (!getInputString(sc, "Введите 'Да', если хотите повторить ввод.").equalsIgnoreCase("Да")) {
                     break;
                 }
             } catch (Exception e) {
