@@ -98,7 +98,7 @@ public class Calculator {
                 amountHardExceptions++;
             }
             try {
-                String exit = getInputString(sc, String.format("Введите '%s', если завершить выпонение программы.", EXIT));
+                String exit = getInputString(sc, String.format("Введите '%s', если хотите завершить выпонение программы.", EXIT));
                 if (exit.equalsIgnoreCase(EXIT)) {
                     break;
                 } else {
