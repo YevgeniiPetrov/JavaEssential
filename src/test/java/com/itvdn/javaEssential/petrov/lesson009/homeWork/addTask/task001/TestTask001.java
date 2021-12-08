@@ -15,7 +15,7 @@ public class TestTask001 {
     void testDog() {
         Dog dog1 = new Dog(3);
         Dog dog2 = new Dog(3);
-        Assertions.assertEquals(true, dog1.equals(dog2));
+        Assertions.assertEquals(false, dog1.equals(dog2));
     }
 
     @Test
