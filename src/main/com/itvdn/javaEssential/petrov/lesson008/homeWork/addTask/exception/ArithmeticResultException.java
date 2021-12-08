@@ -1,4 +1,4 @@
-package com.itvdn.javaEssential.petrov.lesson008.homeWork.addTask.exception;
+package main.com.itvdn.javaEssential.petrov.lesson008.homeWork.addTask.exception;
 
 public class ArithmeticResultException extends MyException {
     public ArithmeticResultException() {

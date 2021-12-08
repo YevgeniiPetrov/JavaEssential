@@ -13,9 +13,9 @@
 
 А также вывести список ошибок.*/
 
-package com.itvdn.javaEssential.petrov.lesson008.homeWork.addTask;
+package main.com.itvdn.javaEssential.petrov.lesson008.homeWork.addTask;
 
-import com.itvdn.javaEssential.petrov.lesson008.homeWork.addTask.exception.*;
+import main.com.itvdn.javaEssential.petrov.lesson008.homeWork.addTask.exception.*;
 
 import java.util.Scanner;
 
@@ -60,18 +60,20 @@ public class Calculator {
         return result;
     }
 
+    public static void checkNumber(int number) throws ThreeNumberException {
+        if (number == 3) {
+            throw new ThreeNumberException();
+        }
+    }
+
     public static String getInputString(Scanner sc, String message) {
         System.out.println(message);
         return sc.next();
     }
 
-    public static int getInputNumber(Scanner sc, String message) throws NotIntInputException, ThreeNumberException {
+    public static int getInputNumber(Scanner sc, String message) throws NotIntInputException {
         try {
-            int number = Integer.parseInt(getInputString(sc, message));
-            if (number == 3) {
-                throw new ThreeNumberException();
-            }
-            return number;
+            return Integer.parseInt(getInputString(sc, message));
         } catch (NumberFormatException e) {
             throw new NotIntInputException();
         }
@@ -86,10 +88,13 @@ public class Calculator {
         while (true) {
             try {
                 int firstNumber = getInputNumber(sc, "Введите первое число:");
+                checkNumber(firstNumber);
                 int secondNumber = getInputNumber(sc, "Введите второе число:");
+                checkNumber(secondNumber);
                 String sign = getInputString(sc, "Введите знак арифметической операции:");
-                System.out.printf("%d %s %d = %d\n",
-                        firstNumber, sign, secondNumber, getArithmeticResult(firstNumber, secondNumber, sign));
+                int result = getArithmeticResult(firstNumber, secondNumber, sign);
+                checkNumber(result);
+                System.out.printf("%d %s %d = %d\n", firstNumber, sign, secondNumber, result);
             } catch (NotIntInputException | ArithmeticResultException e) {
                 System.err.println(e);
                 amountMediumExceptions++;
