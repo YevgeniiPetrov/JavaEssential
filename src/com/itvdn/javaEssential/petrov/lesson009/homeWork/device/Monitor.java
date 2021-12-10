@@ -66,13 +66,13 @@ public class Monitor extends Device {
             return false;
         }
         Monitor monitor = (Monitor) obj;
-        return (getManufacturer() == monitor.getManufacturer() || (getManufacturer() != null && getManufacturer().equals(monitor.getManufacturer()))) &&
+        return (getManufacturer() != null && getManufacturer().equals(monitor.getManufacturer())) &&
                 getPrice() == monitor.getPrice() &&
-                (getSerialNumber() == monitor.getSerialNumber() || (getSerialNumber() != null && getSerialNumber().equals(monitor.getSerialNumber()))) &&
+                (getSerialNumber() != null && getSerialNumber().equals(monitor.getSerialNumber())) &&
                 resolutionX == monitor.resolutionX &&
                 resolutionY == monitor.resolutionY &&
                 ethernetAdapter == monitor.ethernetAdapter &&
-                (mac == monitor.mac || (mac != null && mac.equals(monitor.mac)));
+                (mac != null && mac.equals(monitor.mac));
     }
 
     @Override

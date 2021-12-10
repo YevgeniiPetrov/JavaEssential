@@ -56,9 +56,9 @@ public class Device {
             return false;
         }
         Device device = (Device) obj;
-        return (manufacturer == device.manufacturer || (manufacturer != null && manufacturer.equals(device.manufacturer))) &&
+        return (manufacturer != null && manufacturer.equals(device.manufacturer)) &&
                 price == device.price &&
-                (serialNumber == device.serialNumber || (serialNumber != null && serialNumber.equals(device.serialNumber)));
+                (serialNumber != null && serialNumber.equals(device.serialNumber));
     }
 
     @Override
