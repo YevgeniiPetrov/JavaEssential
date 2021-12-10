@@ -57,7 +57,16 @@ public class Calculator {
     }
 
     public static void checkNumber(int number) throws ThreeNumberException {
-        if (number == 3) {
+        while (number != 0) {
+            if (number % 10 == 3) {
+                throw new ThreeNumberException();
+            }
+            number /= 10;
+        }
+    }
+
+    public static void checkString(String string) throws ThreeNumberException {
+        if (string.contains("3")) {
             throw new ThreeNumberException();
         }
     }
@@ -88,6 +97,7 @@ public class Calculator {
                 int secondNumber = getInputNumber(sc, "Введите второе число:");
                 checkNumber(secondNumber);
                 String sign = getInputString(sc, "Введите знак арифметической операции:");
+                checkString(sign);
                 int result = getArithmeticResult(firstNumber, secondNumber, sign);
                 System.out.printf("%d %s %d = %d\n", firstNumber, sign, secondNumber, result);
                 checkNumber(result);
@@ -98,14 +108,20 @@ public class Calculator {
                 System.err.println(e);
                 amountHardExceptions++;
             }
+            String exit = getInputString(sc, String.format("Введите '%s', если хотите завершить выпонение программы.", EXIT));
             try {
-                String exit = getInputString(sc, String.format("Введите '%s', если хотите завершить выпонение программы.", EXIT));
+                checkString(exit);
+            } catch (ThreeNumberException e) {
+                System.err.println(e);
+                amountHardExceptions++;
+            }
+            try {
                 if (exit.equalsIgnoreCase(EXIT)) {
                     break;
                 } else {
                     throw new NotExitInputException();
                 }
-            } catch (Exception e) {
+            } catch (NotExitInputException e) {
                 System.err.println(e);
                 amountEasyExceptions++;
             }
