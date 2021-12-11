@@ -26,10 +26,13 @@ public class TestTask001 {
     }
 
     @Test
-    void tesHuman() {
+    void testHuman() {
         Human human1 =new Human("Mike");
         Human human2 =new Human("Mike");
-        Assertions.assertEquals(false, human1.equals(human2));
+        Exception exception = Assertions.assertThrows(ClassCastException.class, () -> {
+            human1.equals(human2);
+        });
+        Assertions.assertNotNull(exception);
     }
 
     @Test
