@@ -5,32 +5,70 @@
 
 package com.itvdn.javaEssential.petrov.lesson010.homeWork;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
-public class MyDictionary<TKey,TValue> {
-    private HashMap<TKey,TValue> dictionary;
+class Bucket<TKey,TValue> {
+    private TKey key;
+    private TValue value;
 
-    public MyDictionary() {
-        this.dictionary = new HashMap<>();
+    public Bucket(TKey key, TValue value) {
+        this.key = key;
+        this.value = value;
     }
 
-    public void add(TKey key,TValue value) {
-        dictionary.put(key, value);
+    public TKey getKey() {
+        return key;
+    }
+
+    public TValue getValue() {
+        return value;
+    }
+
+    public void setValue(TValue value) {
+        this.value = value;
+    }
+}
+
+public class MyDictionary<TKey,TValue> {
+    private Bucket[] dictionary;
+    private final int INITIAL_LENGTH = 10;
+    private int size;
+
+    public MyDictionary() {
+        this.dictionary = new Bucket[INITIAL_LENGTH];
+    }
+
+    public void add(TKey key, TValue value) {
+        for (int i = 0; i < size; i++) {
+            if (key == dictionary[i].getKey() || (key != null && key.equals(dictionary[i].getKey()))) {
+                dictionary[i].setValue(value);
+                return;
+            }
+        }
+        if (size == dictionary.length) {
+            dictionary = Arrays.copyOf(dictionary, dictionary.length * 3 / 2 + 1);
+        }
+        dictionary[size++] = new Bucket(key, value);
     }
 
     public TValue get(TKey key) {
-        return dictionary.get(key);
+        for (int i = 0; i < size; i++) {
+            if (key == dictionary[i].getKey() || (key != null && key.equals(dictionary[i].getKey()))) {
+                return (TValue) dictionary[i].getValue();
+            }
+        }
+        return null;
     }
 
     public int size() {
-        return dictionary.size();
+        return size;
     }
 
     public static void main(String[] args) {
         MyDictionary<String, Integer> dictionary = new MyDictionary<>();
         dictionary.add("test1", 1);
         dictionary.add("test2", 2);
-        System.out.println(dictionary.get("test2"));
+        System.out.println(dictionary.get("test1"));
         System.out.println(dictionary.size());
     }
 }

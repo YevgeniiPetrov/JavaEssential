@@ -6,32 +6,40 @@
 
 package com.itvdn.javaEssential.petrov.lesson010.homeWork;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MyList<T> {
-    ArrayList<T> list;
+    private T[] list;
+    private final int INITIAL_LENGTH = 10;
+    private int size;
 
     public MyList() {
-        this.list = new ArrayList<>();
+        this.list = (T[]) new Object[INITIAL_LENGTH];
     }
 
     public void add(T value) {
-        list.add(value);
+        if (size == list.length) {
+            list = Arrays.copyOf(list, list.length * 3 / 2 + 1);
+        }
+        list[size++] = value;
     }
 
     public T get(int index) {
-        return list.get(index);
+        if (index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        return list[index];
     }
 
     public int size() {
-        return list.size();
+        return size;
     }
 
     public static void main(String[] args) {
         MyList<String> list = new MyList<>();
         list.add("test1");
         list.add("test2");
-        System.out.println(list.get(1));
+        System.out.println(list.get(21));
         System.out.println(list.size());
     }
 }
